@@ -1,5 +1,6 @@
 package com.example.remix.ui
 
+import android.graphics.Bitmap
 import android.graphics.Rect
 import android.os.Bundle
 import android.os.Message
@@ -34,6 +35,9 @@ class MainActivity : AppCompatActivity() {
     // 웹 뷰 변수
     private lateinit var webView : WebView
 
+    // 중복 url 방지를 위한 이전 url 저장 변수
+    private var previousUrl: String? = null
+
     // 루트 레이아웃 변수
     private lateinit var rootLayout : LinearLayoutCompat
 
@@ -41,7 +45,13 @@ class MainActivity : AppCompatActivity() {
     private val callback = object : OnBackPressedCallback(true) {
         // 뒤로가기 버튼을 눌렀을 때
         override fun handleOnBackPressed() {
-            if(webView.canGoBack()){
+            if (webView.url.equals(Define.BLUECON_SAMPYO_WEB_HOME_URL) ||
+                webView.url.equals(Define.BLUECON_SAMPYO_WEB_URL)){
+                    // 앱 종료 팝업 start
+                    val appFinishDialog = AppFinishDialog(this@MainActivity)
+                    appFinishDialog.start(this@MainActivity)
+            }
+            else if(webView.canGoBack()){
                 webView.goBack();
             }else{
                 // 앱 종료 팝업 start
@@ -74,7 +84,17 @@ class MainActivity : AppCompatActivity() {
 
     /* 웹 뷰 사용 세팅함수 */
     private fun setWebView() {
-        webView.webViewClient = WebViewClient()
+        webView.webViewClient = object : WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                // 페이지가 시작될 때 이전 URL과 현재 URL을 비교하여 중복 여부를 확인
+                if (url != null && !url.equals(previousUrl, ignoreCase = true) && !url.equals(previousUrl + "#", ignoreCase = true)) {
+                    // 현재 URL과 이전 URL이 다른 경우에만 이전 URL을 업데이트
+                    previousUrl = url
+                }
+            }
+        }
+
         webView.settings.apply {
             javaScriptEnabled = true // 자바 스크립트 사용 여부 true
             setSupportMultipleWindows(true) // 새창 띄우기 true
