@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:hardwareAccelerated="true">
+
     <!-- 인터넷 접속 권한 추가 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 백그라운드 관리 권한 추가-->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <application
         android:allowBackup="true"
@@ -14,22 +20,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test"
         android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="31">
         <activity
+            android:name=".ui.ActivityMain"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".ui.ActivityIntro"
-            android:theme="@style/SplashTheme"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
-
         </activity>
     </application>
 

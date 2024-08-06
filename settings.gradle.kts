@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Test"
+rootProject.name = "Bluecon"
 include(":app")
  

@@ -24,7 +24,7 @@ class ActivityIntro : AppCompatActivity() {
 
         //  일정시간 후 자동으로 MainActivity 전환
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ActivityMain::class.java)
             startActivity(intent)
             finish()
         }, Define.BLUECON_SAMPYO_INTRO_DELAY)

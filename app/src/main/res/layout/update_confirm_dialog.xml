@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView 	android:id="@+id/state_text"
+            android:textSize="15.0dip"
+            android:gravity="left"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="프로그램 다운로드중..">
+        </TextView>
+
+
+        <ProgressBar 	android:id="@+id/installdownloadProgressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout 	android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <ScrollView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="horizontal"
+            android:layout_weight="1"
+            >
+
+            <TextView 	android:id="@+id/update_text"
+                android:textSize="15.0dip"
+                android:gravity="left"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scrollbars="horizontal">
+            </TextView>
+
+
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <Button android:id="@+id/update_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="38dip"
+            android:gravity="center"
+            android:text="업데이트"
+            android:layout_weight="1"
+
+            />
+
+    </LinearLayout>
+</LinearLayout>
