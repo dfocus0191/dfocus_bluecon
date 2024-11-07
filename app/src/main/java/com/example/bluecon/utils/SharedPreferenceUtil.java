@@ -1,4 +1,4 @@
-package com.example.remix.utils;
+package com.example.bluecon.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

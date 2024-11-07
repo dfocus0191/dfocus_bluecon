@@ -3,10 +3,17 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">oss.sampyo.co.kr</domain>
         <domain includeSubdomains="true">221.156.216.210</domain>
+        <domain includeSubdomains="true">58.228.245.178</domain>
         <domain includeSubdomains="true">192.168.0.59</domain>
         <domain includeSubdomains="true">code.jquery.com</domain>
         <domain includeSubdomains="true">dapi.kakao.com</domain>
         <domain includeSubdomains="true">daumcdn.net</domain>
         <domain includeSubdomains="true">smartphone.sampyo.co.kr</domain>
+        <domain includeSubdomains="true">192.168.0.184</domain>
+        <domain includeSubdomains="true">http://localhost:8085</domain>
+        <domain includeSubdomains="true">http://localhost:8085/</domain>
+        <domain includeSubdomains="true">http://10.0.2.2:8085/</domain>
+        <domain includeSubdomains="true">10.0.2.2:8085  </domain>
+        <domain includeSubdomains="true">localhost:8085</domain>
     </domain-config>
 </network-security-config>

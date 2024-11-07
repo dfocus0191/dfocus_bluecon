@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.remix"
+    namespace = "com.example.bluecon"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.remix"
-        minSdk = 23
+        applicationId = "com.example.bluecon"
+        minSdk = 24
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 6
+        versionName = "1.1"
     }
 
     buildTypes {
@@ -44,4 +44,14 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation (libs.dexter)
+    implementation ("com.karumi:dexter:6.2.3")
+    implementation (libs.okhttp3.okhttp)
 }

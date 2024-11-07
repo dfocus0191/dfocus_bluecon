@@ -1,11 +1,13 @@
-package com.example.remix.ui;
+package com.example.bluecon.ui;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -18,9 +20,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -31,15 +31,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.remix.Defines.Define;
-import com.example.remix.R;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.example.bluecon.defines.Defines;
+import com.example.bluecon.R;
+import com.example.bluecon.service.UpdateService;
 
 public class ActivityMain extends AppCompatActivity {
     // region 내부변수
@@ -62,12 +56,19 @@ public class ActivityMain extends AppCompatActivity {
     // 다이어로그 변수
     private AlertDialog Mdialog;
 
+    // 앱 콘텍스트 변수
+    private Context context;
+    private Activity activity;
+
+    // 테스트 버튼 변수
+    private Button btnTest;
+
     // 웹 뷰 뒤로 가기 제어 콜백 변수
     private final OnBackPressedCallback callback = new OnBackPressedCallback(true) {
         @Override
         public void handleOnBackPressed() {
-            if (webView.getUrl().equals(Define.BLUECON_SAMPYO_WEB_HOME_URL) ||
-                    webView.getUrl().equals(Define.BLUECON_SAMPYO_WEB_URL)) {
+            if (webView.getUrl().equals(Defines.BLUECON_SAMPYO_WEB_HOME_URL) ||
+                    webView.getUrl().equals(Defines.BLUECON_SAMPYO_WEB_URL)) {
                 // 앱 종료 팝업 start
                 AppFinishDialog appFinishDialog = new AppFinishDialog(ActivityMain.this);
                 appFinishDialog.start(ActivityMain.this);
@@ -82,6 +83,7 @@ public class ActivityMain extends AppCompatActivity {
     };
     // endregion
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +95,9 @@ public class ActivityMain extends AppCompatActivity {
             return insets;
         });
 
+        context = this;
+        activity = this;
+
         // 뒤로가기 콜백 인스턴스 적용
         this.getOnBackPressedDispatcher().addCallback(this, callback);
 
@@ -100,6 +105,24 @@ public class ActivityMain extends AppCompatActivity {
         webView = findViewById(R.id.webView);
         // 웹 뷰 사용 세팅 함수 start
         setWebView();
+        // 앱 업데이트 확인 서비스 시작
+        Log.d("Test", "startAppAutoUpdaterService 실행 전");
+        startAppAutoUpdaterService();
+        Log.d("Test", "startAppAutoUpdaterService 실행 후");
+
+        //테스트버튼
+        btnTest = findViewById(R.id.btnTest);
+
+        btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UpdateService.hasNewVesionCheck(context, activity);
+                // 파일을 저장할 위치
+//                File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+//                File file = new File(downloadDir, "Bluecon_v1.0.apk");
+//                UpdateService.downloadUpdatedApkFile(context, file);
+            }
+        });
     }
 
     // 웹 뷰 사용 세팅함수
@@ -185,7 +208,7 @@ public class ActivityMain extends AppCompatActivity {
         });
 
         // 웹 뷰 로드
-        webView.loadUrl(Define.BLUECON_SAMPYO_WEB_URL);
+        webView.loadUrl(Defines.BLUECON_SAMPYO_WEB_URL);
     }
 
     /**
@@ -373,6 +396,29 @@ public class ActivityMain extends AppCompatActivity {
         //메인 스레드에서 처리할수 없다.
         AsyncCallInstall task = new ActivityMain.AsyncCallInstall();
         task.execute();
+    }
+
+    /**
+     * 앱 업데이트 서비스 start
+     */
+    public Boolean startAppAutoUpdaterService() {
+        Intent serviceIntent = new Intent(context, UpdateService.class);
+        try{
+            // 서비스 시작
+            context.startService(serviceIntent);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    UpdateService.hasNewVesionCheck(context, activity);
+                }
+            }, 1000);
+            return true;
+        }catch(Exception e) {
+            // 오류시 서비스 종료
+            context.stopService(serviceIntent);
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // region 내부 클래스 부

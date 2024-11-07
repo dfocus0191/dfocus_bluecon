@@ -4,8 +4,58 @@
     <!-- 커스텀 다이어로그 -->
     <string name="dialog_app_finish_message_caution">주의</string>
     <string name="dialog_app_finish_message_title">앱을 종료하시겠습니까?</string>
+    <string name="dialog_app_update_message_title">새로운 버전의 앱이 출시되었습니다.\n Apk 버전을 업데이트 하시겠습니까?</string>
     <string name="dialog_app_finish_message_cancel">취소</string>
     <string name="dialog_app_finish_message_ok">확인</string>
+    <string name="dialog_app_finish_message_update">업데이트</string>
 
+    <!-- 퍼미션 팝업 화면 -->
+    <string name="text_permission_runtime_no_active_error_msg">일부 런타임 권한을 거부하여 앞으로 앱을 사용할 수 없습니다.\n앱을 사용하시려면 기존 앱을 삭제 후 다시설치하여 실행 바랍니다.</string>
+    <string name="text_permission_overlay_already_activityed_msg">\'다른 앱 위에 그리기\' 권한은 이미 활성화 되었습니다.</string>
+    <string name="text_permission_unknown_install_already_activityed_msg">\'알 수 없는 앱 설치\' 권한은 이미 활성화 되었습니다.</string>
+    <string name="text_permission_notification_already_activityed_msg">\'알림\' 권한은 이미 활성화 되었습니다.</string>
+    <string name="text_permission_storage_already_activityed_msg">\'파일접근\' 권한은 이미 활성화 되었습니다.</string>
+    <string name="text_permission_view_title1">앱 사용을 위한</string>
+    <string name="text_permission_view_title2">접근 권한 안내입니다</string>
+    <string name="text_permission_view_subtitle_1">추가설정이 필요한 권한</string>
+
+    <!-- 퍼미션 팝업 화면 XML -->
+    <string name="text_permission_view_sub_1_item_1_title">다른 앱 위에 그리기</string>
+    <string name="text_permission_view_sub_1_item_1_contents">앱 구동 중 업데이트 알림 버튼 표시</string>
+    <string name="text_permission_view_sub_1_item_2_title">알 수 없는 앱 설치</string>
+    <string name="text_permission_view_sub_1_item_2_contents">업데이트된 앱 설치 파일 실행</string>
+    <string name="text_permission_view_subtitle_2">기본 권한</string>
+    <string name="text_permission_view_sub_2_item_1_title">알림 접근</string>
+    <string name="text_permission_view_sub_2_item_1_contents">앱 구동 중 업데이트 알림 표시</string>
+    <string name="text_permission_view_sub_2_item_2_title">파일 저장</string>
+    <string name="text_permission_view_sub_2_item_2_contents">최신 버전의 설치 파일 저장 및 삭제</string>
+    <string name="text_permission_view_sub_2_item_3_title">인터넷</string>
+    <string name="text_permission_view_sub_2_item_3_contents">서버에 앱 업데이트 확인</string>
+
+    <!-- 앱 업데이트 관련 -->
+    <string name="text_service_notification_channel_description">앱의 업데이트를 검사</string>
+    <string name="text_service_notification_channel_id">com.app.remix-channel</string>
+    <string name="text_service_notification_channel_name">앱 자동업데이트 채널</string>
+    <string name="text_service_notification_contents">최신 버전의 블루콘 서비스를 사용중입니다.</string>
+    <string name="text_service_notification_dialog_contents">앱 업데이트를 진행하시겠습니까?</string>
+    <string name="text_service_notification_dialog_contents_fcm">업데이트 항목을 확인중입니다,</string>
+    <string name="text_service_notification_dialog_title">안드로이드 앱 업데이트 알림</string>
+    <string name="text_service_notification_no">취소</string>
+    <string name="text_service_notification_title">블루콘 앱 서비스 실행중</string>
+    <string name="text_service_notification_yes">업데이트</string>
+
+    <string name="text_update_alert_btn_cancel">취소</string>
+    <string name="text_update_alert_btn_update">업데이트</string>
+    <string name="text_update_alert_message_1">새로운 버전의 앱이 출시되었습니다.</string>
+    <string name="text_update_alert_message_2">보다 원활한 서비스를 위해 업데이트를 진행합니다.</string>
+    <string name="text_update_alert_title">업데이트 안내</string>
+    <string name="text_update_notification_contents">앱 업데이트를 설치할 수 있습니다.</string>
+    <string name="text_update_notification_title">앱 업데이터 준비됨</string>
+
+    <!-- http 통신 관련 -->
+    <string name="text_http_error">서버와의 통신이 원할하지 않습니다.\n인터넷이 되는지 확인 후 다시 사용 바랍니다.\n(CODE:0199)</string>
+    <string name="text_http_failed_message_code_1">서버로 송신 중 데이터가 소실되엇습니다.\n(CODE:0101)</string>
+    <string name="text_http_failed_message_code_2">S/W 코드가 일치하지 않습니다.\n불법 S/W가 의심되니 관리자에게 문의 바랍니다.</string>
+    <string name="text_http_success_message_code_20">앱 업데이트 확인 중 서버에서 데이터베이스 처리 오류입니다.</string>
 
 </resources>

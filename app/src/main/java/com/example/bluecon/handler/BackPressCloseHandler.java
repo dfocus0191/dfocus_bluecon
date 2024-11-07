@@ -1,4 +1,4 @@
-package com.example.remix.handler;
+package com.example.bluecon.handler;
 
 import android.app.Activity;
 import android.app.ActivityManager;

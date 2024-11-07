@@ -1,4 +1,4 @@
-package com.example.remix.ui
+package com.example.bluecon.ui
 
 import android.app.Activity
 import android.app.Dialog
@@ -7,7 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
 import android.widget.Button
-import com.example.remix.R
+import com.example.bluecon.R
 
 class AppFinishDialog(context: Context) {
 
